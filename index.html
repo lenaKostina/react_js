@@ -10,6 +10,7 @@
 <body>
 <div id="hello"></div>
 <div id="myTree"></div>
+<div id="button"></div>
 
 <script type="text/babel">
 
@@ -39,14 +40,24 @@
             </div>;
         }
     }
+
+    class Button extends React.Component {
+        render() {
+            return <button>{this.props.name}</button>;
+        }
+    }
+
     ReactDOM.render(
             <Hello name="myTree"/>,
         document.getElementById("hello")
     );
     ReactDOM.render(
             <Tree/>,
-        document.getElementById("myTree"),
-//        function(){ console.log("рендеринг тега React");}
+        document.getElementById("myTree")
+    );
+    ReactDOM.render(
+            <Button name="myButton"/>,
+        document.getElementById("button")
     )
 </script>
 </body>
