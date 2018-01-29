@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<div id="hello"></div>
+<div id="myTree"></div>
+
+<script type="text/babel">
+
+    class Hello extends React.Component {
+        render() {
+            return <h1>Hello, {this.props.name}!</h1>;
+        }
+    }
+
+    class Link extends React.Component {
+        render() {
+            return <a href={this.props.name}>{this.props.name}</a>;
+        }
+    }
+
+    class Tree extends React.Component {
+        render() {
+            return <div>
+                <ul>
+                    <li>
+                        <Link name="Link1"/>
+                    </li>
+                    <li>
+                        <Link name="Link2"/>
+                    </li>
+                </ul>
+            </div>;
+        }
+    }
+    ReactDOM.render(
+            <Hello name="myTree"/>,
+        document.getElementById("hello")
+    );
+    ReactDOM.render(
+            <Tree/>,
+        document.getElementById("myTree"),
+//        function(){ console.log("рендеринг тега React");}
+    )
+</script>
+</body>
+</html>
