@@ -14,6 +14,30 @@
 
 <script type="text/babel">
 
+    function Div (props) {
+        return (
+                <div>
+                    {props.children}
+                </div>
+        )
+    }
+
+    function Ui (props) {
+        return (
+                <ui>
+                    {props.children}
+                </ui>
+        )
+    }
+
+    function Li (props) {
+        return (
+                <li>
+                    {props.children}
+                </li>
+        )
+    }
+
     class Hello extends React.Component {
         render() {
             return <h1>Hello, {this.props.name}!</h1>;
@@ -28,22 +52,31 @@
 
     class Tree extends React.Component {
         render() {
-            return <div>
-                <ul>
-                    <li>
+            return <Div>
+                <Ui>
+                    <Li>
                         <Link name="Link1"/>
-                    </li>
-                    <li>
+                    </Li>
+                    <Li>
                         <Link name="Link2"/>
-                    </li>
-                </ul>
-            </div>;
+                    </Li>
+                </Ui>
+            </Div>;
         }
     }
 
     class Button extends React.Component {
-        render() {
-            return <button>{this.props.name}</button>;
+        constructor (props) {
+            super (props)
+            // .bind() позволяет сохранить this, вне зависимости от контекста, в котором он будет вызываться
+            this.clickHandler = this.clickHandler.bind(this)
+            // * есть упрощенная запись, при которой не нужно прописывать bind в конструкторе
+        }
+        clickHandler () {
+            alert(this.props.name)
+        }
+        render () {
+            return <button onClick={this.clickHandler}>{this.props.name}</button>
         }
     }
 
